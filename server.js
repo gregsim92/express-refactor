@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.set('view engine', 'ejs');
-// app.set('views', __dirname );
+
 app.use(express.static('public'));
 
 song = {
@@ -31,18 +31,18 @@ app.get('/song/update', function(req, res) {
 app.get('/song/1', function(req, res) {
   res.render('pages/song', {
     pageInfo: song.verse1,
-    nextPage: '1/2',
+    nextPage: '/song/2',
   });
 });
 
-app.get('/song/1/2', function(req, res) {
+app.get('/song/2', function(req, res) {
   res.render('pages/song', {
     pageInfo: song.verse2,
-    nextPage: '2/3',
+    nextPage: '/song/3',
   });
 });
 
-app.get('/song/1/2/3', function(req, res) {
+app.get('/song/3', function(req, res) {
   res.render('pages/song', {
     pageInfo: song.verse3,
     nextPage: '/song/1',
